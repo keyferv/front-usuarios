@@ -2,15 +2,15 @@
 
 Este proyecto es el frontend desarrollado en Angular 19 para consumir la API del backend Spring Boot.
 
-## Proyecto Creado con Video Coding
+## Proyecto Creado con Agentes de Código CLI
 
-Este proyecto fue desarrollado utilizando video coding con herramientas CLI modernas:
+Este proyecto fue desarrollado utilizando agentes de código como herramientas CLI modernas:
 
 - **iFlow CLI**: Interfaz de línea de comandos para desarrollo ágil
-- **OpenCode**: Herramientas de desarrollo colaborativo
-- **Video Coding**: Proceso de desarrollo en vivo grabado
+- **Agentes de Código**: Especialistas virtuales para tareas específicas (frontend, backend, planificación, etc.)
+- **OpenCode**: Entorno de desarrollo colaborativo
 
-El uso de estas herramientas permite una experiencia de desarrollo más eficiente y colaborativa.
+El uso de estos agentes permite una experiencia de desarrollo más eficiente y especializada.
 
 ## Requisitos
 
