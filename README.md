@@ -2,6 +2,16 @@
 
 Este proyecto es el frontend desarrollado en Angular 19 para consumir la API del backend Spring Boot.
 
+## Proyecto Creado con Video Coding
+
+Este proyecto fue desarrollado utilizando video coding con herramientas CLI modernas:
+
+- **iFlow CLI**: Interfaz de línea de comandos para desarrollo ágil
+- **OpenCode**: Herramientas de desarrollo colaborativo
+- **Video Coding**: Proceso de desarrollo en vivo grabado
+
+El uso de estas herramientas permite una experiencia de desarrollo más eficiente y colaborativa.
+
 ## Requisitos
 
 - Node.js (v22 o superior)

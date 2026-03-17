@@ -37,6 +37,22 @@ yarn-error.log
 testem.log
 /typings
 
+# Skills folders
+.agent/skills/
+.agents/skills/
+.claude/skills/
+.continue/skills/
+.iflow/skills/
+
+# Image files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.svg
+*.bmp
+
 # System files
 .DS_Store
 Thumbs.db
