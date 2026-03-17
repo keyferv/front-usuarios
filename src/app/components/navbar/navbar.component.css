@@ -1,0 +1,314 @@
+.navbar-shell {
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  background: rgba(255, 255, 255, 0.96);
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.05);
+}
+
+.navbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 10px 16px;
+}
+
+.navbar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.25);
+  color: #ffffff;
+}
+
+.brand-mark .mat-icon {
+  width: 22px;
+  height: 22px;
+  font-size: 22px;
+  line-height: 22px;
+}
+
+.brand-text {
+  font-family: 'DM Serif Display', 'Syne', serif;
+  font-size: 2rem;
+  line-height: 1;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.top-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.banner-btn {
+  min-height: 42px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding-inline: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.banner-btn .mat-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.banner-btn--outline {
+  border-color: #cbd5e1;
+  color: #334155;
+  background: #ffffff;
+}
+
+.banner-btn--primary {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.22);
+}
+
+.user-trigger {
+  border-radius: 0 !important;
+  min-height: 42px;
+  padding: 0 14px 0 8px;
+  color: #334155;
+  background: transparent;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+:host ::ng-deep .user-trigger .mdc-button__label {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 20px !important;
+}
+
+/* Colores de íconos dentro del user-trigger */
+:host ::ng-deep .user-trigger .mat-icon {
+  color: #334155 !important;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+/* Ícono del brand-mark (sobre fondo azul) */
+:host ::ng-deep .brand-mark .mat-icon {
+  color: #ffffff !important;
+}
+
+/* Ícono en botones primarios (sobre fondo azul) */
+:host ::ng-deep .banner-btn--primary .mat-icon {
+  color: #ffffff !important;
+}
+
+/* Íconos de las nav-pills — heredan el color del pill (gris normal, azul activo) */
+:host ::ng-deep .nav-pill .mat-icon {
+  color: inherit !important;
+}
+
+
+
+.user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #0a66c2;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.80rem;
+  font-weight: 640;
+}
+
+.user-name {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+  color: #0f172a;
+  letter-spacing: 0.01em;
+}
+
+.page-nav-wrap {
+  background: #ffffff;
+}
+
+.page-nav-inner {
+  /* Mismo max-width que .dashboard-page (1200px) para alineación exacta */
+  max-width: 1200px;
+  margin: 0 auto;
+  /* padding-inline igual al dashboard-shell (16px base, 24px en tablet+) */
+  padding: 30px 16px 12px !important;
+}
+
+.nav-scroller {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 2px;
+}
+
+.nav-scroller::-webkit-scrollbar {
+  height: 6px;
+}
+
+.nav-scroller::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+/* Contenedor: solo fila sin cápsula */
+.nav-pills {
+  display: inline-flex;
+  align-items: stretch;
+  gap: 4px;
+  min-width: max-content;
+}
+
+/* Cada opción: sin fondo, con posición relativa para el indicador */
+.nav-pill {
+  position: relative;
+  min-height: 36px;
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 14px 4px;
+  background: transparent !important;
+  color: #64748b !important;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.nav-pill:hover {
+  color: #0f172a !important;
+}
+
+.nav-pill .mat-icon {
+  width: 17px;
+  height: 17px;
+  font-size: 17px;
+  line-height: 17px;
+  color: inherit;
+  transition: color 150ms ease;
+}
+
+/* ──── Indicador azul de página activa ──── */
+.nav-pill.active {
+  background: transparent !important;
+  color: #2563eb !important;
+  font-weight: 700;
+}
+
+/* Línea azul inferior animada */
+.nav-pill.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 6px;
+  right: 6px;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+  background: #2563eb;
+}
+
+.menu-item-logout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/*
+ * NOTA: mat-menu se renderiza en el CDK Overlay (fuera del shadow del componente).
+ * Los estilos del panel .user-menu-panel están en src/styles.css (globales).
+ * Los :host ::ng-deep de aquí NO alcanzan el overlay panel.
+ */
+
+@media (max-width: 900px) {
+  .brand-text {
+    font-size: 1.8rem;
+  }
+
+  .top-actions {
+    margin-left: auto;
+  }
+}
+
+/* Tablet+: igualar padding-inline al dashboard-shell (24px) */
+@media (min-width: 768px) {
+  .page-nav-inner {
+    padding: 20px 24px 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar-inner {
+    padding: 10px 12px 8px;
+  }
+
+  .page-nav-inner {
+    /* móvil: mismo padding que dashboard-shell en móvil (16px) */
+    padding: 12px 16px 10px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+
+  .brand-text {
+    font-size: 1.55rem;
+  }
+
+  .top-actions {
+    gap: 8px;
+  }
+
+  .user-trigger {
+    min-height: 38px;
+    padding: 0 12px;
+  }
+
+  :host ::ng-deep .user-trigger .mdc-button__label {
+    gap: 14px !important;
+  }
+
+  .user-name {
+    max-width: 90px;
+  }
+}

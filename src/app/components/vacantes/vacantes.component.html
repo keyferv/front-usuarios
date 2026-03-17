@@ -1,0 +1,79 @@
+<div class="vacantes-shell">
+  <div class="vacantes-page">
+    <section class="vacantes-heading">
+      <h1>Oportunidades Destacadas</h1>
+      <p>Explora las mejores vacantes seleccionadas para tu perfil profesional</p>
+    </section>
+
+    <!-- Filtros dinámicos basados en categorías del backend -->
+    <section class="vacantes-filters" aria-label="Filtros de vacantes" *ngIf="categorias.length > 0">
+      <button type="button" class="filter-chip filter-chip--active">Todo</button>
+      <button type="button" class="filter-chip" *ngFor="let cat of categorias">
+        {{ cat.categoryName }}
+      </button>
+    </section>
+
+    <!-- Estado de carga -->
+    <div *ngIf="isLoading" class="loading-state">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p>Buscando las mejores oportunidades...</p>
+    </div>
+
+    <!-- Lista de vacantes reales -->
+    <section class="vacantes-list" *ngIf="!isLoading && vacantes.length > 0">
+      <article *ngFor="let vacante of vacantes" class="vacante-card">
+        <span
+          class="vacante-status"
+          [ngClass]="{
+            'vacante-status--active': vacante.estado.type.toLowerCase().includes('activ'),
+            'vacante-status--pending': vacante.estado.type.toLowerCase().includes('pendien'),
+            'vacante-status--closed': vacante.estado.type.toLowerCase().includes('cerrad') || vacante.estado.type.toLowerCase().includes('expira')
+          }"
+        >
+          {{ vacante.estado.type }}
+        </span>
+
+        <span class="expiring-soon-badge" *ngIf="isExpiringSoon(vacante.expirationDate)">
+          <mat-icon>timer</mat-icon>
+          Expira pronto
+        </span>
+
+        <h2>{{ vacante.offerName }}</h2>
+        <!-- Empresa no está en la entidad Vacantes, pondremos un placeholder o podríamos usar la categoría -->
+        <p class="vacante-company">{{ (vacante.categories && vacante.categories.length > 0) ? vacante.categories[0].categoryName : 'Empresa Certificada' }}</p>
+
+        <div class="vacante-meta">
+          <span class="vacante-meta-item">
+            <mat-icon>location_on</mat-icon>
+            <span>{{ vacante.detail?.location || 'Ubicación flexible' }}</span>
+          </span>
+
+          <span class="vacante-meta-item vacante-meta-item--salary">
+            <mat-icon>payments</mat-icon>
+            <span>{{ vacante.salary | currency : 'USD' : 'symbol' : '1.0-2' }}</span>
+          </span>
+        </div>
+
+        <p class="vacante-description">
+          {{ vacante.description | slice:0:120 }}{{ vacante.description.length > 120 ? '...' : '' }}
+        </p>
+
+        <div class="vacante-actions">
+          <button mat-raised-button class="apply-button">APLICAR AHORA</button>
+          <button mat-button class="details-button">
+            <span>VER MÁS</span>
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
+      </article>
+    </section>
+
+    <!-- No hay resultados -->
+    <div *ngIf="!isLoading && vacantes.length === 0" class="empty-state">
+      <mat-icon>search_off</mat-icon>
+      <h3>No encontramos vacantes disponibles</h3>
+      <p>Vuelve a intentarlo más tarde o cambia tus filtros.</p>
+    </div>
+
+  </div>
+</div>

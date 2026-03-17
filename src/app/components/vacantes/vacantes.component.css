@@ -1,0 +1,310 @@
+.vacantes-shell {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #ffffff 45%, #f1f5f9 100%);
+  padding: 24px 16px 48px;
+}
+
+.vacantes-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vacantes-heading {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.vacantes-heading h1 {
+  margin: 0;
+  font-family: 'DM Serif Display', 'Syne', serif;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  line-height: 1.1;
+  color: #111827;
+}
+
+.vacantes-heading p {
+  margin: 14px auto 0;
+  max-width: 720px;
+  color: #475569;
+  font-size: 1.1rem;
+}
+
+.vacantes-filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 26px;
+}
+
+.filter-chip {
+  min-height: 44px;
+  border-radius: 999px;
+  border: 2px solid #cbd5e1;
+  background: #f8fafc;
+  color: #334155;
+  font-weight: 700;
+  font-size: 1.03rem;
+  letter-spacing: 0.01em;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-chip:hover {
+  border-color: #94a3b8;
+  background: #ffffff;
+}
+
+.filter-chip--active {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+}
+
+.vacantes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.vacante-card {
+  background: #ffffff;
+  border: 1px solid #d9e2ec;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vacante-status {
+  width: fit-content;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  line-height: 1;
+}
+
+.vacante-status--active {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.vacante-status--pending {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.vacante-status--closed {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.expiring-soon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  color: #92400e;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  width: fit-content;
+  animation: pulse-warn 2s infinite;
+}
+
+.expiring-soon-badge mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+}
+
+@keyframes pulse-warn {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.vacante-card h2 {
+  margin: 0;
+  font-family: 'DM Serif Display', 'Syne', serif;
+  font-size: clamp(1.8rem, 2.6vw, 2.2rem);
+  line-height: 1.15;
+  color: #0f172a;
+  word-break: break-word;
+}
+
+.vacante-company {
+  margin: 0;
+  color: #475569;
+  font-size: 1.08rem;
+  word-break: break-word;
+}
+
+.vacante-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.vacante-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #334155;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.vacante-meta-item .mat-icon {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  line-height: 20px;
+  color: #64748b;
+}
+
+.vacante-meta-item--salary {
+  font-family: 'JetBrains Mono', monospace;
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.vacante-description {
+  margin: 2px 0 0;
+  color: #334155;
+  line-height: 1.6;
+  font-size: 1.03rem;
+  max-width: 860px;
+}
+
+.vacante-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.apply-button {
+  min-height: 46px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #0bb3a8, #14b8a6);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 0 28px;
+}
+
+.apply-button:hover {
+  background: linear-gradient(90deg, #0aa39a, #0fa598);
+}
+
+.details-button {
+  min-height: 44px;
+  border-radius: 12px;
+  color: #1e3a5f;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+}
+
+.details-button .mat-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+@media (max-width: 767px) {
+  .vacantes-shell {
+    padding: 20px 16px 40px;
+  }
+
+  .vacantes-heading {
+    margin-bottom: 20px;
+  }
+
+  .vacantes-heading p {
+    font-size: 1rem;
+  }
+
+  .vacantes-filters {
+    justify-content: flex-start;
+  }
+
+  .filter-chip {
+    flex: 1 1 calc(50% - 8px);
+    min-width: 0;
+    padding: 0 12px;
+  }
+
+  .vacante-card {
+    padding: 18px;
+    gap: 11px;
+  }
+
+  .vacante-meta {
+    gap: 10px 18px;
+  }
+
+  .vacante-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .apply-button,
+  .details-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ── Estados de carga y vacío ── */
+.loading-state,
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+  min-height: 400px;
+  background: white;
+  border-radius: 24px;
+  border: 1px dashed #cbd5e1;
+  margin: 20px 0;
+}
+
+.loading-state p,
+.empty-state p {
+  margin-top: 16px;
+  color: #64748b;
+  font-size: 1.1rem;
+}
+
+.empty-state mat-icon {
+  width: 64px;
+  height: 64px;
+  font-size: 64px;
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
+
+.empty-state h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.8rem;
+  color: #0f172a;
+  margin: 0;
+}
+

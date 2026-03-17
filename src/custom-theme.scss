@@ -1,0 +1,40 @@
+
+// Custom Theming for Angular Material
+@use '@angular/material' as mat;
+
+// Include the core styles
+@include mat.core();
+
+// Define your color palettes
+$custom-primary: mat.m2-define-palette(mat.$m2-indigo-palette);
+$custom-accent:  mat.m2-define-palette(mat.$m2-green-palette);
+$custom-warn:    mat.m2-define-palette(mat.$m2-red-palette);
+
+// ✅ LIGHT theme (anteriormente estaba como dark-theme, lo que causaba
+//    el fondo oscuro en todos los componentes Material, incluido mat-menu)
+$custom-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $custom-primary,
+    accent:  $custom-accent,
+    warn:    $custom-warn,
+  ),
+  typography: mat.m2-define-typography-config(),
+  density: 0,
+));
+
+// Aplicar el tema
+@include mat.all-component-themes($custom-theme);
+
+// Overrides de variables MDC para el design system claro
+html {
+  --mdc-theme-primary:     #2563eb;
+  --mdc-theme-secondary:   #0a66c2;
+  --mdc-theme-surface:     #ffffff;
+  --mdc-theme-on-surface:  #0f172a;
+  --mdc-theme-background:  #f8fafc;
+
+  // Menu / overlay surfaces → fondo blanco explícito
+  --mat-menu-container-color:       #ffffff;
+  --mat-menu-item-label-text-color: #334155;
+  --mdc-menu-container-color:       #ffffff;
+}

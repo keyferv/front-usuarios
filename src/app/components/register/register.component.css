@@ -1,0 +1,3 @@
+/* Reutiliza exactamente los mismos estilos que login.component.css
+   No duplicamos CSS — los estilos están centralizados en login */
+@import '../login/login.component.css';

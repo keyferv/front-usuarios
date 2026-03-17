@@ -1,0 +1,112 @@
+<div class="profile-shell">
+  <div class="profile-page">
+    
+    <!-- Estado de carga -->
+    <div *ngIf="isLoading" class="loading-container">
+      <mat-spinner diameter="50"></mat-spinner>
+      <p>Cargando tu perfil profesional...</p>
+    </div>
+
+    <section class="profile-grid" *ngIf="!isLoading && usuario">
+      <article class="profile-card profile-card--info">
+        <header class="profile-card-header">
+          <h1>Información Personal</h1>
+          <button mat-stroked-button class="edit-btn">Editar Perfil</button>
+        </header>
+
+        <div class="profile-card-body">
+          <div class="info-grid">
+            <div class="info-item">
+              <p class="info-label">Nombre Completo</p>
+              <p class="info-value">{{ fullName }}</p>
+            </div>
+
+            <div class="info-item">
+              <p class="info-label">Email Corporativo</p>
+              <p class="info-value">{{ usuario.email }}</p>
+            </div>
+
+            <div class="info-item">
+              <p class="info-label">Teléfono de Contacto</p>
+              <p class="info-value">{{ usuario.phone || 'No registrado' }}</p>
+            </div>
+
+            <div class="info-item">
+              <p class="info-label">Cargo / Título</p>
+              <p class="info-value">{{ usuario.jobTitle || 'Profesional Independiente' }}</p>
+            </div>
+
+            <div class="info-item">
+              <p class="info-label">Fecha de Nacimiento</p>
+              <p class="info-value">{{ usuario.birthDate || 'No especificada' }}</p>
+            </div>
+
+            <div class="info-item">
+              <p class="info-label">Miembro desde</p>
+              <p class="info-value">{{ usuario.dateRegister | date:'mediumDate' }}</p>
+            </div>
+          </div>
+
+          <div class="skills-block" *ngIf="usuario.certifications">
+            <p class="skills-title">Certificaciones y Logros</p>
+            <p class="certifications-text">{{ usuario.certifications }}</p>
+          </div>
+
+          <div class="skills-block">
+            <p class="skills-title">Habilidades Técnicas</p>
+            <div class="skills-list">
+              <span *ngFor="let skill of skills" class="skill-pill">{{ skill.name }}</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="profile-card profile-card--completion">
+        <header class="profile-card-header">
+          <h2>Estado de la Cuenta</h2>
+        </header>
+
+        <div class="profile-card-body completion-body">
+          <div class="status-badge" [ngClass]="usuario.isEnabled ? 'status--active' : 'status--inactive'">
+            <mat-icon>{{ usuario.isEnabled ? 'verified' : 'pending' }}</mat-icon>
+            <span>{{ usuario.isEnabled ? 'Cuenta Verificada' : 'Pendiente de Activación' }}</span>
+          </div>
+
+          <div class="completion-ring" aria-label="Completitud del perfil">
+            <svg viewBox="0 0 120 120">
+              <circle class="ring-track" cx="60" cy="60" r="44"></circle>
+              <circle class="ring-progress" cx="60" cy="60" r="44" [style.stroke-dashoffset]="usuario.phone ? '0' : '70'"></circle>
+            </svg>
+            <span>{{ usuario.phone ? '100%' : '75%' }}</span>
+          </div>
+
+          <ul class="completion-list">
+            <li class="completion-item completion-item--done">
+              <mat-icon>check_circle</mat-icon>
+              <span>Email verificado</span>
+            </li>
+            <li class="completion-item" [ngClass]="usuario.phone ? 'completion-item--done' : 'completion-item--todo'">
+              <mat-icon>{{ usuario.phone ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
+              <span>Teléfono de contacto</span>
+            </li>
+            <li class="completion-item" [ngClass]="usuario.jobTitle ? 'completion-item--done' : 'completion-item--todo'">
+              <mat-icon>{{ usuario.jobTitle ? 'check_circle' : 'radio_button_unchecked' }}</mat-icon>
+              <span>Experiencia laboral</span>
+            </li>
+          </ul>
+
+          <button mat-raised-button color="primary" class="complete-btn">ACTUALIZAR DATOS</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Error o no encontrado -->
+    <div *ngIf="!isLoading && !usuario" class="error-container">
+      <mat-icon>person_off</mat-icon>
+      <h3>No pudimos cargar tu información</h3>
+      <p>Ocurrió un problema al conectar con el servidor.</p>
+      <button mat-button (click)="loadProfile()">REINTENTAR</button>
+    </div>
+
+  </div>
+</div>

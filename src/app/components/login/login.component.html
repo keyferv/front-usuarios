@@ -1,0 +1,102 @@
+<div class="login-shell">
+
+  <!-- Panel izquierdo: visual/brand -->
+  <aside class="login-brand" aria-hidden="true">
+    <div class="brand-noise"></div>
+    <div class="brand-content">
+      <div class="brand-logo">
+        <mat-icon>work</mat-icon>
+      </div>
+      <h2 class="brand-headline">Tu próxima<br>oportunidad<br>te espera.</h2>
+      <p class="brand-sub">Conectamos talento con las mejores empresas del país.</p>
+      <ul class="brand-features">
+        <li><mat-icon>check_circle</mat-icon><span>Miles de vacantes activas</span></li>
+        <li><mat-icon>check_circle</mat-icon><span>Seguimiento en tiempo real</span></li>
+        <li><mat-icon>check_circle</mat-icon><span>Perfiles verificados</span></li>
+      </ul>
+    </div>
+    <div class="brand-circle brand-circle--1"></div>
+    <div class="brand-circle brand-circle--2"></div>
+  </aside>
+
+  <!-- Panel derecho: formulario -->
+  <main class="login-form-panel">
+    <div class="login-form-inner">
+
+      <!-- Cabecera -->
+      <div class="login-header">
+        <span class="login-eyebrow">Portal de empleos</span>
+        <h1 class="login-title">Bienvenido de nuevo</h1>
+        <p class="login-desc">Ingresa tus credenciales para continuar.</p>
+      </div>
+
+      <!-- Formulario -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form" novalidate>
+
+        <div class="field-group">
+          <label class="field-label" for="login-username">Usuario</label>
+          <div class="field-wrap">
+            <mat-icon class="field-icon">person_outline</mat-icon>
+            <input
+              id="login-username"
+              matInput
+              formControlName="username"
+              placeholder="Tu nombre de usuario"
+              type="text"
+              class="field-input"
+              autocomplete="username"
+            >
+          </div>
+          <span class="field-error" *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+            El usuario es requerido
+          </span>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="login-password">Contraseña</label>
+          <div class="field-wrap">
+            <mat-icon class="field-icon">lock_outline</mat-icon>
+            <input
+              id="login-password"
+              matInput
+              type="password"
+              formControlName="password"
+              placeholder="••••••••"
+              class="field-input"
+              autocomplete="current-password"
+            >
+          </div>
+          <span class="field-error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+            La contraseña es requerida
+          </span>
+        </div>
+
+        <div class="login-meta">
+          <label class="remember-me">
+            <input type="checkbox" class="remember-checkbox" checked>
+            <span>Recordarme</span>
+          </label>
+          <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <button
+          type="submit"
+          class="login-btn"
+          [disabled]="loginForm.invalid || isLoading"
+          [class.login-btn--loading]="isLoading"
+        >
+          <mat-spinner diameter="20" *ngIf="isLoading"></mat-spinner>
+          <span *ngIf="!isLoading">Iniciar Sesión</span>
+          <mat-icon *ngIf="!isLoading">arrow_forward</mat-icon>
+        </button>
+
+      </form>
+
+      <p class="login-register">
+        ¿No tienes cuenta?&nbsp;<a routerLink="/register" class="register-link">Regístrate gratis</a>
+      </p>
+
+    </div>
+  </main>
+
+</div>

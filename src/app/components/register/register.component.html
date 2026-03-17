@@ -1,0 +1,132 @@
+<div class="login-shell">
+
+  <!-- Panel izquierdo: visual/brand -->
+  <aside class="login-brand" aria-hidden="true">
+    <div class="brand-noise"></div>
+    <div class="brand-content">
+      <div class="brand-logo">
+        <mat-icon>work</mat-icon>
+      </div>
+      <h2 class="brand-headline">Empieza tu<br>carrera<br>hoy.</h2>
+      <p class="brand-sub">Únete a miles de profesionales que ya encontraron su oportunidad ideal.</p>
+      <ul class="brand-features">
+        <li><mat-icon>check_circle</mat-icon><span>Registro gratuito y rápido</span></li>
+        <li><mat-icon>check_circle</mat-icon><span>Acceso inmediato a vacantes</span></li>
+        <li><mat-icon>check_circle</mat-icon><span>Tu perfil, tu privacidad</span></li>
+      </ul>
+    </div>
+    <div class="brand-circle brand-circle--1"></div>
+    <div class="brand-circle brand-circle--2"></div>
+  </aside>
+
+  <!-- Panel derecho: formulario -->
+  <main class="login-form-panel">
+    <div class="login-form-inner">
+
+      <div class="login-header">
+        <span class="login-eyebrow">Crear cuenta</span>
+        <h1 class="login-title">Regístrate gratis</h1>
+        <p class="login-desc">Completa los datos para crear tu cuenta.</p>
+      </div>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="login-form" novalidate>
+
+        <!-- Nombre completo -->
+        <div class="field-group">
+          <label class="field-label" for="reg-name">Nombre completo</label>
+          <div class="field-wrap">
+            <mat-icon class="field-icon">badge</mat-icon>
+            <input
+              id="reg-name"
+              formControlName="fullName"
+              placeholder="Tu nombre y apellido"
+              type="text"
+              class="field-input"
+              autocomplete="name"
+            >
+          </div>
+          <span class="field-error" *ngIf="f['fullName'].invalid && f['fullName'].touched">
+            El nombre es requerido
+          </span>
+        </div>
+
+        <!-- Usuario -->
+        <div class="field-group">
+          <label class="field-label" for="reg-username">Usuario</label>
+          <div class="field-wrap">
+            <mat-icon class="field-icon">person_outline</mat-icon>
+            <input
+              id="reg-username"
+              formControlName="username"
+              placeholder="Elige un nombre de usuario"
+              type="text"
+              class="field-input"
+              autocomplete="username"
+            >
+          </div>
+          <span class="field-error" *ngIf="f['username'].invalid && f['username'].touched">
+            El usuario es requerido
+          </span>
+        </div>
+
+        <!-- Email -->
+        <div class="field-group">
+          <label class="field-label" for="reg-email">Correo electrónico</label>
+          <div class="field-wrap">
+            <mat-icon class="field-icon">mail_outline</mat-icon>
+            <input
+              id="reg-email"
+              formControlName="email"
+              placeholder="tu@correo.com"
+              type="email"
+              class="field-input"
+              autocomplete="email"
+            >
+          </div>
+          <span class="field-error" *ngIf="f['email'].invalid && f['email'].touched">
+            <span *ngIf="f['email'].hasError('required')">El correo es requerido</span>
+            <span *ngIf="f['email'].hasError('email')">Ingresa un correo válido</span>
+          </span>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="field-group">
+          <label class="field-label" for="reg-password">Contraseña</label>
+          <div class="field-wrap">
+            <mat-icon class="field-icon">lock_outline</mat-icon>
+            <input
+              id="reg-password"
+              formControlName="password"
+              placeholder="Mínimo 8 caracteres"
+              type="password"
+              class="field-input"
+              autocomplete="new-password"
+            >
+          </div>
+          <span class="field-error" *ngIf="f['password'].invalid && f['password'].touched">
+            <span *ngIf="f['password'].hasError('required')">La contraseña es requerida</span>
+            <span *ngIf="f['password'].hasError('minlength')">Mínimo 8 caracteres</span>
+          </span>
+        </div>
+
+        <button
+          type="submit"
+          class="login-btn"
+          [disabled]="registerForm.invalid || isLoading"
+          [class.login-btn--loading]="isLoading"
+        >
+          <mat-spinner diameter="20" *ngIf="isLoading"></mat-spinner>
+          <span *ngIf="!isLoading">Crear cuenta</span>
+          <mat-icon *ngIf="!isLoading">arrow_forward</mat-icon>
+        </button>
+
+      </form>
+
+      <p class="login-register">
+        ¿Ya tienes cuenta?&nbsp;<a routerLink="/login" class="register-link">Inicia sesión</a>
+      </p>
+
+    </div>
+  </main>
+
+</div>

@@ -1,0 +1,8 @@
+<div class="home-container">
+  <h1 class="break-words">Bienvenido{{ username ? ', ' + username : '' }} al Sistema de Empleos</h1>
+  <p class="break-words">Gestiona tus ofertas, solicitudes y perfil desde aquí.</p>
+  <div class="actions">
+    <button routerLink="/profile" class="btn">Ver Perfil</button>
+    <button (click)="logout()" class="btn btn-danger">Cerrar Sesión</button>
+  </div>
+</div>

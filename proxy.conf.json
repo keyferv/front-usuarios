@@ -1,0 +1,38 @@
+{
+  "/auth": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/usuarios": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/vacantes": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/solicitudes": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/categorias": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/estados": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/api": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

@@ -1,0 +1,184 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --text-primary: #191919;
+  --text-secondary: #666666;
+  --accent-emerald: #0a66c2;
+  --accent-amber: #e7a33e;
+  --accent-red: #cf0000;
+  --accent-blue: #0a66c2;
+  --accent-purple: #8b5cf6;
+  --border-radius: 8px;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --transition-fast: 150ms ease-out;
+  --transition-slow: 250ms ease-out;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+}
+
+img,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Minimalist LinkedIn-like body */
+body {
+  margin: 0;
+  font-family: "Inter", "Helvetica Neue", sans-serif;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DM Serif Display', 'Syne', serif;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+/* JetBrains Mono for numerical data */
+.numeric-data, .stat-number, .date-display, .salary-display {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Utility classes */
+.glow-active {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+}
+
+.glow-closed {
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+
+.glow-pending {
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.4);
+}
+
+.glow-processing {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+}
+
+/* Animation classes (disabled for minimalist design) */
+.staggered-fade-in {
+  opacity: 1; /* disable animation */
+}
+
+.hover-lift {
+  transition: var(--transition-fast);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Material overrides */
+.mat-mdc-card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius);
+  transition: var(--transition-fast);
+}
+
+.mat-mdc-raised-button {
+  border-radius: 8px;
+  transition: var(--transition-fast);
+}
+
+.mat-mdc-raised-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ======================================================
+   USER MENU PANEL (mat-menu)
+   mat-menu se renderiza en el CDK overlay del body,
+   fuera del componente → los estilos DEBEN ser globales.
+   ====================================================== */
+
+/* Forzar fondo blanco en el contenedor del overlay */
+.cdk-overlay-container .user-menu-panel.mat-mdc-menu-panel {
+  background: #ffffff !important;
+  /* Sin margen superior → el panel se "pega" al borde inferior del navbar */
+  margin-top: -1px;
+  /* Borde que rodea el panel; el top se funde con el borde del header */
+  border: 1px solid #e2e8f0;
+  /* Esquinas superiores planas (continúa el navbar), redondeadas solo abajo */
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.10);
+  overflow: hidden;
+  min-width: 200px;
+}
+
+.cdk-overlay-container .user-menu-panel .mat-mdc-menu-content {
+  background: #ffffff !important;
+  padding: 6px;
+}
+
+.cdk-overlay-container .user-menu-panel .mat-mdc-menu-item {
+  min-height: 42px;
+  border-radius: 8px;
+  color: #334155;
+  font-weight: 500;
+  background: #ffffff !important;
+}
+
+.cdk-overlay-container .user-menu-panel .mat-mdc-menu-item:hover,
+.cdk-overlay-container .user-menu-panel .mat-mdc-menu-item:focus {
+  background: #f1f5f9 !important;
+}
+
+.cdk-overlay-container .user-menu-panel .mat-mdc-menu-item .mat-icon {
+  color: #64748b;
+}
+
+/* Opción "Cerrar Sesión" en rojo */
+.cdk-overlay-container .user-menu-panel .mat-mdc-menu-item.menu-item-logout,
+.cdk-overlay-container .user-menu-panel .mat-mdc-menu-item .menu-item-logout {
+  color: #ef4444 !important;
+}
+
+.cdk-overlay-container .user-menu-panel .mat-mdc-menu-item .menu-item-logout .mat-icon,
+.cdk-overlay-container .user-menu-panel .mat-mdc-menu-item.menu-item-logout .mat-icon {
+  color: #ef4444 !important;
+}
+

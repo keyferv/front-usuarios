@@ -1,0 +1,151 @@
+<div class="dashboard-shell">
+  <div class="dashboard-page">
+    <section class="dashboard-topbar">
+      <div class="dashboard-intro">
+        <h1>Hola, {{ username }}</h1>
+        <p>Aqui tienes un resumen ejecutivo de tu actividad y progreso en el sistema.</p>
+      </div>
+
+      <div class="dashboard-top-actions">
+        <button mat-stroked-button class="top-action top-action--outline">
+          <mat-icon>file_download</mat-icon>
+          <span>Exportar</span>
+        </button>
+        <button mat-raised-button class="top-action top-action--primary">
+          <mat-icon>add</mat-icon>
+          <span>Nueva Solicitud</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="welcome-banner">
+      <h2>Tablero Principal</h2>
+      <p>Visualiza tus oportunidades, solicitudes y avances en un solo lugar.</p>
+    </section>
+
+    <section class="stats-grid">
+      <article
+        *ngFor="let card of statCards"
+        class="stat-card"
+        [routerLink]="card.route"
+      >
+        <div class="stat-card-head">
+          <div
+            class="stat-card-icon"
+            [ngClass]="{
+              'stat-card-icon--blue': card.title.includes('Vacantes'),
+              'stat-card-icon--green': card.title.includes('Solicitudes'),
+              'stat-card-icon--orange': card.title.includes('Perfil'),
+              'stat-card-icon--purple': card.title.includes('Mensajes')
+            }"
+          >
+            <mat-icon
+              [ngClass]="{
+                'stat-card-icon-symbol--blue': card.title.includes('Vacantes'),
+                'stat-card-icon-symbol--green': card.title.includes('Solicitudes'),
+                'stat-card-icon-symbol--orange': card.title.includes('Perfil'),
+                'stat-card-icon-symbol--purple': card.title.includes('Mensajes')
+              }"
+            >
+              {{ card.icon }}
+            </mat-icon>
+          </div>
+
+          <span class="stat-trend" *ngIf="!card.title.includes('Perfil')">
+            <mat-icon>trending_up</mat-icon>
+            {{ card.title.includes('Vacantes') ? '+2' : card.title.includes('Solicitudes') ? '+1' : '+3' }}
+          </span>
+        </div>
+
+        <p class="stat-card-label">{{ card.title }}</p>
+
+        <div class="stat-card-value-row">
+          <p class="stat-card-value">{{ card.count }}</p>
+        </div>
+
+        <div class="stat-card-progress" *ngIf="card.title.includes('Perfil')">
+          <div class="stat-card-progress-track">
+            <div class="stat-card-progress-fill" [style.width.%]="85"></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="dashboard-content-grid">
+      <article class="panel-card panel-card--activity">
+        <header class="panel-header">
+          <h3>Actividad Reciente</h3>
+          <button mat-button class="panel-link">Historial Completo</button>
+        </header>
+
+        <div class="activity-list">
+          <div *ngFor="let activity of activityTimeline" class="activity-item">
+            <div
+              class="activity-icon"
+              [ngClass]="{
+                'activity-icon--success': activity.type === 'success',
+                'activity-icon--info': activity.type === 'info',
+                'activity-icon--update': activity.type === 'update',
+                'activity-icon--warning': activity.type === 'warning'
+              }"
+            >
+              <mat-icon
+                [ngClass]="{
+                  'activity-icon-symbol--success': activity.type === 'success',
+                  'activity-icon-symbol--info': activity.type === 'info',
+                  'activity-icon-symbol--update': activity.type === 'update',
+                  'activity-icon-symbol--warning': activity.type === 'warning'
+                }"
+              >
+                {{ activity.icon }}
+              </mat-icon>
+            </div>
+
+            <div class="activity-content">
+              <p class="activity-tag">
+                {{
+                  activity.type === 'success'
+                    ? 'SOLICITUD ENVIADA'
+                    : activity.type === 'info'
+                    ? 'NUEVA VACANTE'
+                    : activity.type === 'update'
+                    ? 'ACTUALIZACION'
+                    : 'RECORDATORIO'
+                }}
+              </p>
+              <p class="activity-description">{{ activity.text }}</p>
+              <p class="activity-time">{{ activity.time }}</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel-card panel-card--metrics">
+        <header class="panel-header">
+          <h3>Métricas de Perfil</h3>
+        </header>
+
+        <div class="metrics-list">
+          <div class="metric-row">
+            <span>Tasa de éxito</span>
+            <strong>78%</strong>
+          </div>
+          <div class="metric-row">
+            <span>Actividad mensual</span>
+            <strong>15</strong>
+          </div>
+          <div class="metric-row">
+            <span>Empresas</span>
+            <strong>8</strong>
+          </div>
+          <div class="metric-row">
+            <span>Citas</span>
+            <strong>3</strong>
+          </div>
+        </div>
+
+        <button mat-raised-button class="optimize-button">OPTIMIZAR PERFIL</button>
+      </article>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<div class="solicitudes-shell">
+  <div class="solicitudes-page">
+    <section class="solicitudes-card">
+      <header class="solicitudes-header">
+        <h1>Mis Solicitudes</h1>
+      </header>
+
+      <div class="solicitudes-table-wrap">
+        <table class="solicitudes-table" aria-label="Tabla de solicitudes">
+          <thead>
+            <tr>
+              <th scope="col">Posición</th>
+              <th scope="col">Empresa</th>
+              <th scope="col">Fecha de Aplicación</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Entrevista</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let solicitud of solicitudes">
+              <td class="cell-position">{{ solicitud.vacante }}</td>
+              <td>{{ solicitud.empresa }}</td>
+              <td>{{ solicitud.fechaSolicitud | date:'d MMM y':'':'es' }}</td>
+
+              <td>
+                <span
+                  class="status-pill"
+                  [ngClass]="{
+                    'status-pill--review': solicitud.estado.toLowerCase().includes('revis'),
+                    'status-pill--accepted': solicitud.estado.toLowerCase().includes('acept'),
+                    'status-pill--rejected': solicitud.estado.toLowerCase().includes('rechaz'),
+                    'status-pill--process': solicitud.estado.toLowerCase().includes('proceso'),
+                    'status-pill--pending': solicitud.estado.toLowerCase().includes('pend')
+                  }"
+                >
+                  {{ solicitud.estado }}
+                </span>
+              </td>
+
+              <td>
+                {{
+                  solicitud.estado.toLowerCase().includes('revis')
+                    ? 'Pendiente'
+                    : solicitud.estado.toLowerCase().includes('acept')
+                    ? 'Completada'
+                    : solicitud.estado.toLowerCase().includes('rechaz')
+                    ? '-'
+                    : (solicitud.ultimaActualizacion | date:'d MMM y':'':'es')
+                }}
+              </td>
+
+              <td>
+                <button mat-button class="view-link">Ver</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
